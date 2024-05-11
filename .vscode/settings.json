@@ -1,0 +1,40 @@
+{
+    "editor.rulers": [
+        80,
+    ],
+    "editor.renderWhitespace": "boundary",
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    //
+    "files.autoSave": "onFocusChange",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    //
+    "c-cpp-flylint.clang.enable": true,
+    "c-cpp-flylint.cppcheck.enable": true,
+    "c-cpp-flylint.lizard.enable": false,
+    "c-cpp-flylint.flawfinder.enable": false,
+    "c-cpp-flylint.flexelint.enable": false,
+    "c-cpp-flylint.run": "onType",
+    "c-cpp-flylint.language": "c",
+    "c-cpp-flylint.standard": [
+        "c11"
+    ],
+    "[c]": {
+        // "editor.defaultFormatter": "xaver.clang-format",
+        "editor.defaultFormatter": "ms-vscode.cpptools",
+    },
+    "[cpp]": {
+        // "editor.defaultFormatter": "xaver.clang-format",
+        "editor.defaultFormatter": "ms-vscode.cpptools",
+    },
+    //
+    "cmake.automaticReconfigure": false,
+    "cmake.autoSelectActiveFolder": false,
+    "cmake.configureOnEdit": false,
+    "cmake.configureOnOpen": false,
+    "cmake.clearOutputBeforeBuild": true,
+}

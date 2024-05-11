@@ -1,0 +1,6 @@
+services:
+  myopencv:
+    build: ./
+    volumes:
+      - ./:/mnt
+    tty: true
