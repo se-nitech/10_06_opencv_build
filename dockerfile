@@ -9,19 +9,22 @@ RUN apt -y update \
     libzstd-dev libjpeg-turbo8-dev libjpeg8-dev \
     libopenjp2-7-dev libopenjp2-tools \
     libpng-dev libtiff-dev \
-    libopenblas-dev liblapack-dev liblapacke-dev \
-    && ln -s /usr/include/lapack* /usr/include/x86_64-linux-gnu
+    libopenblas-dev liblapack-dev liblapacke-dev
+
+# ${ARCH} == x86_64 (Intel) or aarch64 (Arm)
+# ENV ARCH="x86_64"
+ENV ARCH="aarch64"
+RUN ln -s /usr/include/lapack* /usr/include/${ARCH}-linux-gnu
 
 WORKDIR /tmp
-
 RUN wget https://github.com/opencv/opencv/archive/refs/tags/4.9.0.zip \
     && unzip 4.9.0.zip \
     && mkdir -p build \
     && cd build \
     && cmake ../opencv-4.9.0 \
-        -D OpenBLAS_INCLUDE_DIR=/usr/include/x86_64-linux-gnu \
-        -D OpenBLAS_LIB=/lib/x86_64-linux-gnu/ \
-        -D LAPACK_LIBRARIES=/lib/x86_64-linux-gnu/liblapack.so \
+    -D OpenBLAS_INCLUDE_DIR=/usr/include/${ARCH}-linux-gnu \
+    -D OpenBLAS_LIB=/lib/${ARCH}-linux-gnu/ \
+    -D LAPACK_LIBRARIES=/lib/${ARCH}-linux-gnu/liblapack.so \
     && cmake --build . -- -j4
 
 WORKDIR /mnt
